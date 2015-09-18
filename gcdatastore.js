@@ -13,8 +13,8 @@ var auth = {
   projectId: process.env.GC_PROJECTID
 }
 
-if (process.env.GC_FILEPATH) {
-  auth.keyFilename = process.env.GC_FILEPATH
+if (process.env.GC_KEYPATH) {
+  auth.keyFilename = process.env.GC_KEYPATH
 }
 
 // auth to gcloud globally
