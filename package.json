@@ -1,6 +1,6 @@
 {
   "name": "gcdatastore",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mongodb style api for Google cloud datastore",
   "main": "gcdatastore.js",
   "scripts": {
