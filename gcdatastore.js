@@ -8,13 +8,13 @@ var extend = require('extend');
 var debugPerf = require('debug')('datastore:performance');
 var isDebugPerf = process.env.DEBUG && (process.env.DEBUG.indexOf('datastore:*') > -1 || process.env.DEBUG.indexOf('datastore:performance') > -1);
 
-if (!process.env.GCS_PROJECTID) throw new Error('GCS_PROJECTID env variable is required')
+if (!process.env.GC_PROJECTID) throw new Error('GC_PROJECTID env variable is required')
 var auth = {
-  projectId: process.env.GCS_PROJECTID
+  projectId: process.env.GC_PROJECTID
 }
 
-if (process.env.GCS_FILEPATH) {
-  auth.keyFilename = process.env.GCS_FILEPATH
+if (process.env.GC_FILEPATH) {
+  auth.keyFilename = process.env.GC_FILEPATH
 }
 
 // auth to gcloud globally

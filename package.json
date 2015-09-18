@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/Livion-OY/gcdatastore/issues"
   },
-  "homepage": "https://github.com/Livion-OY/gcdatastore#readme"
+  "homepage": "https://github.com/Livion-OY/gcdatastore#readme",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "extend": "^3.0.0",
+    "gcloud": "^0.21.0",
+    "q": "^1.4.1"
+  }
 }
