@@ -1,0 +1,23 @@
+{
+  "name": "gcdatastore",
+  "version": "0.0.1",
+  "description": "Mongodb style api for Google cloud datastore",
+  "main": "gcdatastore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Livion-OY/gcdatastore.git"
+  },
+  "keywords": [
+    "datastore",
+    "mongodb"
+  ],
+  "author": "Toni Lahnalampi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Livion-OY/gcdatastore/issues"
+  },
+  "homepage": "https://github.com/Livion-OY/gcdatastore#readme"
+}
