@@ -133,6 +133,40 @@ GCD.prototype.get = function(query, filter, params) {
   }.bind(this))
 }
 
+GCD.prototype.getPages = function(query, filter, params) {
+  return Q.Promise(function(resolve, reject) {
+    if (!this._c) throw new Error('collection is required')
+    if (!params || !params.onPageChange) throw new Error('onPageChange is required')
+    var pf = new perf();
+    var selectArr = genFilter(filter);
+    var q = _dataset.createQuery(this._c)
+      .select(selectArr)
+
+    q = genQuery(q, this._c, query);
+
+    if (params) {
+      if (params.limit) q = q.limit(parseInt(params.limit, 10))
+      if (params.skip) q = q.offset(parseInt(params.skip, 10));
+      if (params.sort) genSort(params.sort);
+    }
+    q = q.autoPaginate(false);
+    var callback = function(err, entities, nextQuery) {
+      debugPerf('GCD.getPages request took ' + pf.diff() + ' milliseconds');
+      if (err) return reject(err);
+
+      if (entities && entities.length) {
+        params.onPageChange(parseRes(entities))
+      }
+      if (nextQuery) {
+        _dataset.runQuery(nextQuery, callback);
+      } else {
+        resolve();
+      }
+    };
+    _dataset.runQuery(q, callback);
+  }.bind(this))
+}
+
 GCD.prototype.getOne = function(id, filter) {
   return Q.Promise(function(resolve, reject) {
     if (!this._c) throw new Error('collection is required')
