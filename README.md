@@ -15,7 +15,7 @@
 
 ```
 // define projectid and keypath
-// note that keypath is optional if you are working inside google compute engine and 
+// note that keypath is optional if you are working inside google compute engine and you have set permissions to datastore
 process.env.GC_PROJECTID = 'gc-project-id'
 process.env.GC_KEYPATH = path.join('path/to/gc-key.json')
 var GCD = require('gcdatastore')
