@@ -87,7 +87,20 @@ function genSort(q, sort) {
 function parseRes(entities) {
   return entities.map(function(entity) {
     if (entity.key.path[1]) {
-      return extend(entity.data, {_id: entity.key.path[1]});
+      // parse JSON back to objects and make a shallow copy
+      var data = entity.data;
+      var d = {}
+      for (var k in data) {
+        if (data.hasOwnProperty(k)) {
+          if (data[k].charAt(0) === '{') {
+            d[k] = JSON.parse(data[k])
+          } else {
+            d[k] = data[k]
+          }
+        }
+      }
+      d._id = entity.key.path[1]
+      return d;
     }
     throw new Error('path does not have id')
   })
@@ -197,9 +210,22 @@ GCD.prototype.save = function(data) {
       delete data._id;
     }
     var key = _dataset.key(keyArr);
+
+    // create shallow copy with objects stringified.
+    var d = {}
+    for (var k in data) {
+      if (data.hasOwnProperty(k)) {
+        if (typeof data[k] === 'object') {
+          d[k] = JSON.stringify(data[k])
+        } else {
+          d[k] = data[k];
+        }
+      }
+    }
+
     _dataset.save({
       key: key,
-      data: data
+      data: d
     }, function(err) {
       debugPerf('GCD.save request took ' + pf.diff() + ' milliseconds');
       if (err) return reject(err);

@@ -1,4 +1,4 @@
-#last review done for eslint 0.16.1
+#last review done for eslint v1.6.0
 
 ecmaFeatures:
   jsx: true
@@ -107,7 +107,7 @@ rules:
 
   #Stylistic Issues
   no-mixed-requires: 0
-  indent: [1, 2] #this option sets a specific tab width for your code
+  indent: [1, 2, {indentSwitchCase: true}] #this option sets a specific tab width for your code
   brace-style: [1, "1tbs", { "allowSingleLine": true }] #enforce one true brace style
   camelcase: 0 #require camel case names
   comma-spacing: [1, {"before": false, "after": true}] #enforce spacing before and after comma
