@@ -215,7 +215,7 @@ GCD.prototype.save = function(data) {
     var d = {}
     for (var k in data) {
       if (data.hasOwnProperty(k)) {
-        if (typeof data[k] === 'object') {
+        if (!(data instanceof Date) && typeof data[k] === 'object') {
           d[k] = JSON.stringify(data[k])
         } else {
           d[k] = data[k];
