@@ -92,7 +92,7 @@ function parseRes(entities) {
       var d = {}
       for (var k in data) {
         if (data.hasOwnProperty(k)) {
-          if (data[k].charAt(0) === '{') {
+          if (typeof data[k] === 'string' && data[k].charAt(0) === '{') {
             d[k] = JSON.parse(data[k])
           } else {
             d[k] = data[k]
